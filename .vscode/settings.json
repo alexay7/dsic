@@ -1,0 +1,4 @@
+{
+    "eslint.workingDirectories": ["backend","frontend"],
+    "eslint.validate": ["typescript", "typescriptreact"]
+  }
