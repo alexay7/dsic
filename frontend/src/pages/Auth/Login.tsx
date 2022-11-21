@@ -29,7 +29,7 @@ export function Login (): React.ReactElement {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Nombre de Usuario</label>
                 <input required id="username" type="text" onChange={(e) => setUsername(e.target.value)} value={username}/>
-                <label htmlFor="">Contraseña</label>
+                <label htmlFor="password">Contraseña</label>
                 <input required type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
                 <button>Iniciar Sesión</button>
             </form>

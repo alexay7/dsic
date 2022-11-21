@@ -8,9 +8,9 @@ interface AuthContextType {
   setUserData: (v: User) => void
 }
 
-const AuthContext = createContext<AuthContextType | null>(null)
+const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 export function useAuth (): AuthContextType {
-  return useContext(AuthContext as React.Context<AuthContextType>)
+  return useContext(AuthContext)
 }
 
 interface AuthProviderProps {
