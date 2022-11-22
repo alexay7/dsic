@@ -1,30 +1,32 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { anonymRequest } from '../../api/api'
-import { useAuth } from '../../contexts/AuthContext'
-import { setCookie } from '../../helpers/helpers'
+import React, {useState} from "react";
 
-export function Login (): React.ReactElement {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const { setUserData } = useAuth()
-  const navigate = useNavigate()
+import {useNavigate} from "react-router-dom";
 
-  async function handleSubmit (e: React.FormEvent<HTMLFormElement>): Promise<void> {
-    e.preventDefault()
-    const body = {
-      username,
-      password
+import {anonymRequest} from "../../api/api";
+import {useAuth} from "../../contexts/AuthContext";
+import {setCookie} from "../../helpers/helpers";
+
+export function Login(): React.ReactElement {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const {setUserData} = useAuth();
+    const navigate = useNavigate();
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
+        e.preventDefault();
+        const body = {
+            username,
+            password
+        };
+        const response = await anonymRequest("login", {method: "POST", body: JSON.stringify(body)}) as {access_token: string};
+        if (response.access_token !== null) {
+            setUserData({username});
+            setCookie("token", response.access_token, 365);
+            navigate("/");
+        }
     }
-    const response = await anonymRequest('login', { method: 'POST', body: JSON.stringify(body) }) as { access_token: string }
-    if (response.access_token !== null) {
-      setUserData({ username })
-      setCookie('token', response.access_token, 365)
-      navigate('/')
-    }
-  }
 
-  return (
+    return (
         <div className="">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Nombre de Usuario</label>
@@ -34,5 +36,5 @@ export function Login (): React.ReactElement {
                 <button>Iniciar Sesión</button>
             </form>
         </div>
-  )
+    );
 }
