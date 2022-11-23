@@ -22,8 +22,8 @@ export function Header(): React.ReactElement {
                     </div>
                 ) : (
                     <div className="flex w-1/4 justify-evenly">
-                        <Link to="/login" className='uppercase text-xl'>Log In</Link>
-                        <Link to="/externo" className='uppercase text-xl'>Sign Up</Link>
+                        <Link to="/login" className='uppercase text-xl'>Iniciar Sesión</Link>
+                        <Link to="/externo" className='uppercase text-xl'>Registro</Link>
                     </div>
                 )}
             </div>

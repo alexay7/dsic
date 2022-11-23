@@ -1,86 +1,52 @@
-import React, {useState} from "react";
+import React from "react";
 
-import {FormControl} from "@mui/material";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Slider from "@mui/material/Slider";
-
+import {ReactComponent as AudiLogo} from "../../assets/icons/audi.svg";
+import {ReactComponent as BmwLogo} from "../../assets/icons/bmw.svg";
+import {ReactComponent as FordLogo} from "../../assets/icons/ford.svg";
+import {ReactComponent as HyundaiLogo} from "../../assets/icons/hyundai.svg";
+import {ReactComponent as MercedesLogo} from "../../assets/icons/mercedes.svg";
+import {ReactComponent as MiniLogo} from "../../assets/icons/mini.svg";
+import {ReactComponent as SeatLogo} from "../../assets/icons/seat.svg";
+import {ReactComponent as VolswagenLogo} from "../../assets/icons/volkswagen.svg";
+import {ReactComponent as VolvoLogo} from "../../assets/icons/volvo.svg";
+import BestPrices from "../../assets/img/bestprices.webp";
+import FlexiblePrices from "../../assets/img/flexible.webp";
+import NoCosts from "../../assets/img/nocost.png";
 import {PageContainer} from "../../components/PageContainer/PageContainer";
-
-const marks = [
-    {
-        value: 0,
-        label: "0€"
-    },
-    {
-        value: 250,
-        label: "250€"
-    },
-    {
-        value: 500,
-        label: "500€"
-    },
-    {
-        value: 750,
-        label: "750€"
-    },
-    {
-        value: 1000,
-        label: "1000€"
-    }
-];
+import {SearchComponent} from "../../components/SearchComponent/SearchComponent";
 
 export function Home(): React.ReactElement {
-    const [type, setType] = useState("");
-    const [energy, setEnergy] = useState("");
-    const [price, setPrice] = useState<number[]>([0, 1000]);
 
     return (
         <PageContainer>
-            <div className="my-5 flex justify-between border-primary border-4 rounded-xl p-8">
-                <FormControl className="w-1/5">
-                    <InputLabel id="type-label">Tipo de vehículo</InputLabel>
-                    <Select
-                        labelId="type-label"
-                        value={type}
-                        label="Tipo de vehículo"
-                        onChange={(e)=>setType(e.target.value)}
-                    >
-                        <MenuItem value="car">Coche</MenuItem>
-                        <MenuItem value="furgo">Furgoneta</MenuItem>
-                        <MenuItem value="bike">Moto</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl className="w-1/5">
-                    <InputLabel id="type-label">Combustible</InputLabel>
-                    <Select
-                        labelId="type-label"
-                        value={energy}
-                        label="Tipo de vehículo"
-                        onChange={(e)=>setEnergy(e.target.value)}
-                    >
-                        <MenuItem value="electric">Eléctrico</MenuItem>
-                        <MenuItem value="gas">Gasolina/Diesel</MenuItem>
-                    </Select>
-                </FormControl>
-                <Box sx={{width: 300}}>
-                    <Slider
-                        getAriaLabel={() => "Temperature range"}
-                        value={price}
-                        onChange={(e, value)=>setPrice(value as number[])}
-                        valueLabelDisplay="auto"
-                        getAriaValueText={(e)=>`${e}€`}
-                        max={1000}
-                        step={50}
-                        marks={marks}
-                    />
-                </Box>
-                <button className="border-primary border-4 rounded-xl px-16 text-xl text-primary font-semibold hover:bg-primary hover:text-[#FFF] duration-150">Buscar!</button>
-            </div>
+            <SearchComponent/>
             <div className="my-8">
-                <h3 className="text-4xl uppercase font-semibold">Los mejores vehículos del mercado</h3>
+                <h3 className="text-4xl font-semibold">Los mejores vehículos del mercado</h3>
+                <div className="h-52 flex my-8 flex-wrap gap-4 justify-center">
+                    <AudiLogo/>
+                    <BmwLogo/>
+                    <FordLogo/>
+                    <HyundaiLogo/>
+                    <MercedesLogo/>
+                    <MiniLogo/>
+                    <SeatLogo/>
+                    <VolswagenLogo/>
+                    <VolvoLogo/>
+                </div>
+            </div>
+            <div className="flex">
+                <div className="h-40 w-1/3 flex items-center gap-4">
+                    <img className="w-1/6" src={FlexiblePrices} alt="" />
+                    <p className="uppercase text-3xl">Alquileres Flexibles</p>
+                </div>
+                <div className="h-40 w-1/3 flex items-center gap-2">
+                    <img className="w-1/6" src={NoCosts} alt="" />
+                    <p className="uppercase text-3xl">Sin Ningún Cargo Oculto</p>
+                </div>
+                <div className="h-40 w-1/3 flex items-center gap-2">
+                    <img className="w-1/6" src={BestPrices} alt="" />
+                    <p className="uppercase text-3xl">Los Mejores Precios del Mercado</p>
+                </div>
             </div>
         </PageContainer>
     );

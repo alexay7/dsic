@@ -8,4 +8,6 @@ export const VehiculosSchema = new Schema<Vehiculo>({
   brand: { type: String, required: true },
   model: { type: String, required: true },
   year: { type: Number, required: true },
+  location: String,
+  imageUrl: String,
 });

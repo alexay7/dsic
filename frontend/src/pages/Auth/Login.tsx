@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 import {anonymRequest} from "../../api/api";
+import {PageContainer} from "../../components/PageContainer/PageContainer";
 import {useAuth} from "../../contexts/AuthContext";
 import {setCookie} from "../../helpers/helpers";
 
@@ -27,7 +28,7 @@ export function Login(): React.ReactElement {
     }
 
     return (
-        <div className="">
+        <PageContainer>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Nombre de Usuario</label>
                 <input required id="username" type="text" onChange={(e) => setUsername(e.target.value)} value={username}/>
@@ -35,6 +36,6 @@ export function Login(): React.ReactElement {
                 <input required type="password" onChange={(e) => setPassword(e.target.value)} value={password}/>
                 <button>Iniciar Sesión</button>
             </form>
-        </div>
+        </PageContainer>
     );
 }
