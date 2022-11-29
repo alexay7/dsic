@@ -5,4 +5,6 @@ export interface Vehiculo {
   year: number;
   location: string;
   imageUrl: string;
+  price: number;
+  available: boolean;
 }
