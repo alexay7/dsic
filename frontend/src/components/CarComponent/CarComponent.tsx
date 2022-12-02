@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 
+import {PaymentPopup} from "../../pages/Search/components/PaymentPopup";
 import {Car} from "../../types/car";
 
 interface CarComponentProps {
@@ -8,9 +9,14 @@ interface CarComponentProps {
 
 export function CarComponent(props:CarComponentProps):React.ReactElement {
     const {car} = props;
+    const [payment, setPayment] = useState(true);
+
 
     return (
         <div className="flex w-10/12 m-auto">
+            {payment && (
+                <PaymentPopup showPopup={payment} closePopup={()=>setPayment(false)} vehicle={car}/>
+            )}
             <div className="w-1/6">
                 <img src={car.imageUrl} alt="" />
             </div>

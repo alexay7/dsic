@@ -10,4 +10,7 @@ export const VehiculosSchema = new Schema<Vehiculo>({
   year: { type: Number, required: true },
   location: String,
   imageUrl: String,
+  price: Number,
+  energy: String,
+  available: { type: Boolean, default: true },
 });

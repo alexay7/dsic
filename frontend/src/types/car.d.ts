@@ -1,4 +1,5 @@
 export interface Car {
+    _id?:string;
     type: string;
     brand: string;
     model: string;
@@ -7,4 +8,5 @@ export interface Car {
     imageUrl: string;
     price:number;
     available:boolean;
+    energy:string;
 }

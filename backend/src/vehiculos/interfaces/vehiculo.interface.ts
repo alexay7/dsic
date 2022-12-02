@@ -7,4 +7,5 @@ export interface Vehiculo {
   imageUrl: string;
   price: number;
   available: boolean;
+  energy: string;
 }

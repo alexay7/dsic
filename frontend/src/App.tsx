@@ -6,6 +6,7 @@ import {Routes} from "react-router-dom";
 import "./App.css";
 import {Login} from "./pages/Auth/Login";
 import {Home} from "./pages/Home/Home";
+import {Reservas} from "./pages/Reservas/Reservas";
 import {Search} from "./pages/Search/Search";
 
 function App(): React.ReactElement {
@@ -14,6 +15,7 @@ function App(): React.ReactElement {
             <Routes>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/search" element={<Search/>}/>
+                <Route path="/reservas" element={<Reservas/>}/>
                 <Route path="*" element={<Home/>}/>
             </Routes>
         </div>
