@@ -16,8 +16,9 @@ export function Header(): React.ReactElement {
                 </Link>
                 <h2 className='uppercase w-1/2 font-bold text-2xl'>Te ayudamos a alquilar tu vehículo ideal</h2>
                 {userData ? (
-                    <div className="flex w-1/4 justify-evenly">
+                    <div className="flex w-1/3 justify-evenly items-center gap-2">
                         <Link to="/reservas" className='uppercase text-xl'>Mis Reservas</Link>
+                        <Link to="/settings" className='uppercase text-xl'>Ajustes</Link>
                         <button onClick={logout} className='uppercase text-xl'>Cerrar Sesión</button>
                     </div>
                 ) : (

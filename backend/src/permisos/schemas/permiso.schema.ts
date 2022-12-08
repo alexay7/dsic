@@ -8,3 +8,5 @@ export const PermisosSchema = new Schema<Permiso>({
   type: { type: String, required: true },
   documentUrl: { type: String, required: true },
 });
+
+PermisosSchema.index({ userId: 1, type: 1 }, { unique: true });

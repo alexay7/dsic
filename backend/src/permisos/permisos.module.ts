@@ -12,5 +12,6 @@ import { PermisosSchema } from './schemas/permiso.schema';
   ],
   controllers: [PermisosController],
   providers: [PermisosService],
+  exports: [PermisosService],
 })
 export class PermisosModule {}

@@ -36,7 +36,10 @@ export function Search():React.ReactElement {
             ) : (
                 <ul>
                     {vehicles.length > 0 ? vehicles.map((vehicle)=>(
-                        <CarComponent car={vehicle} key={vehicle._id}/>
+                        <div className="flex flex-col gap-2" key={vehicle._id}>
+                            <CarComponent car={vehicle}/>
+                            <hr className="border-primary"/>
+                        </div>
                     )) : (
                         <p className="text-primary text-2xl font-semibold">No se han encontrado resultados</p>
                     )}

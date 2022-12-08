@@ -19,7 +19,7 @@ export class ReservasController {
       userId: req.user._id,
       ...body,
     };
-    console.log(newReserva);
+    return this.reservasService.createReserva(newReserva);
   }
 
   @UseGuards(JwtAuthGuard)

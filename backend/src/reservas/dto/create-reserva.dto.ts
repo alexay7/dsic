@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Types } from 'mongoose';
 
 export class CreateReservaDto {
   @IsNotEmpty()
   vehicleId: Types.ObjectId;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   city: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   address: string;
 
