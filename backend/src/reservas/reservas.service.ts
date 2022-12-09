@@ -15,6 +15,16 @@ export class ReservasService {
   }
 
   async getReservasByUser(userId: Types.ObjectId): Promise<Reserva[]> {
-    return this.reservaModel.find({ userId });
+    const a = await this.reservaModel
+      .aggregate()
+      .match({ userId: new Types.ObjectId(userId.toString()) })
+      .lookup({
+        from: 'vehiculos',
+        foreignField: '_id',
+        localField: 'vehicleId',
+        as: 'vehicle',
+      })
+      .unwind({ path: '$vehicle' });
+    return a;
   }
 }

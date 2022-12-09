@@ -50,22 +50,26 @@ export function CarComponent(props:CarComponentProps):React.ReactElement {
                 </div>
             </div>
             <div className="flex w-1/6 justify-center items-center">
-                <button className="duration-150 px-4 py-1 bg-primary text-[#FFF] border-2 border-primary rounded-lg font-semibold hover:bg-[#FFF] hover:text-primary" onClick={()=>{
-                    if (userData) {
-                        if (!userData.licences?.includes(car.type)) {
-                            toast.error("Debes añadir a tu perfil una licencia para poder conducir este vehículo");
-                            navigate("/settings");
-                            return;
-                        }
-                        setPayment(true);
-                    } else {
-                        toast.error("Debes haber iniciado sesión para poder alquilar vehículos");
-                        navigate("/login");
+                {car.available ? (
+                    <button className="duration-150 px-4 py-1 bg-primary text-[#FFF] border-2 border-primary rounded-lg font-semibold hover:bg-[#FFF] hover:text-primary" onClick={()=>{
+                        if (userData) {
+                            if (!userData.licences?.includes(car.type)) {
+                                toast.error("Debes añadir a tu perfil una licencia para poder conducir este vehículo");
+                                navigate("/settings");
+                                return;
+                            }
+                            setPayment(true);
+                        } else {
+                            toast.error("Debes haber iniciado sesión para poder alquilar vehículos");
+                            navigate("/login");
 
-                    }
-                }}
-                >Alquilar
-                </button>
+                        }
+                    }}
+                    >Alquilar
+                    </button>
+                ) : (
+                    <button  className="duration-150 px-4 py-1 bg-[#f00] text-[#FFF] border-2 border-[#f00] rounded-lg font-semibold" >No Disponible</button>
+                )}
             </div>
         </div>
     );

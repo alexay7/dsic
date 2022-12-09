@@ -54,7 +54,6 @@ export function PaymentPopup(props:PaymentPopupProps):React.ReactElement {
                     />
                 </FormControl>
                 <p className="border-b-primary border-b">Hasta el {new Date(new Date().getTime() + ((days + 1) * 24 * 3600 * 1000)).toLocaleDateString()}</p>
-                <p className="rounded-lg border-primary border text-2xl text-primary font-semibold">{(vehicle.price * days) + (entrega ? 50 : 0)}€</p>
                 <FormGroup>
                     <FormControlLabel control={(
                         <Checkbox checked={entrega} onChange={(e, checked)=>{
@@ -79,6 +78,8 @@ export function PaymentPopup(props:PaymentPopupProps):React.ReactElement {
                         </FormControl>
                     </>
                 )}
+                <h3 className="text-primary text-xl">Datos de Pago</h3>
+                <hr className="border-primary"/>
                 <CardElement className="py-4 border border-primary px-2 rounded-lg border-dotted" options={{
                     iconStyle: "solid",
 
@@ -110,6 +111,7 @@ export function PaymentPopup(props:PaymentPopupProps):React.ReactElement {
                     <Checkbox required checked={cardPresent} className="cursor-default pointer-events-none"/>
                     <p>Los datos de la tarjeta son {cardPresent ? <span className="text-[#0f0] font-semibold">Válidos</span> : <span  className="text-[#f00] font-semibold">Inválidos</span>}</p>
                 </div>
+                <p className="rounded-lg border-primary border text-2xl text-primary font-semibold">{(vehicle.price * days) + (entrega ? 50 : 0)}€</p>
                 <button className="disabled:bg-opacity-50 disabled:border-opacity-50 duration-150 px-4 py-1 bg-primary text-[#FFF] border-2 border-primary rounded-lg font-semibold hover:bg-[#FFF] hover:text-primary" disabled={!cardPresent} type="submit">Pagar</button>
             </form>
         </Popup>

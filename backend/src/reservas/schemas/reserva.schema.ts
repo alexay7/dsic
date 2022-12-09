@@ -10,4 +10,5 @@ export const ReservasSchema = new Schema<Reserva>({
   address: { type: String, required: false },
   days: { type: Number, required: true },
   price: { type: Number, required: true },
+  startDate: { type: Date },
 });

@@ -7,4 +7,5 @@ export interface Reserva {
   address: string;
   days: number;
   price: number;
+  startDate: Date;
 }
