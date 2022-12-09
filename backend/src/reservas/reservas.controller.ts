@@ -8,10 +8,13 @@ import {
   Req,
   UseGuards,
   BadRequestException,
+  Delete,
+  Param,
 } from '@nestjs/common';
 import { ReservasService } from './reservas.service';
 import { Reserva } from './interfaces/reserva.interface';
 import { VehiculosService } from 'src/vehiculos/vehiculos.service';
+import { Types } from 'mongoose';
 
 @Controller('reservas')
 export class ReservasController {
@@ -42,5 +45,11 @@ export class ReservasController {
   @Get()
   async getUserReservas(@Req() req) {
     return this.reservasService.getReservasByUser(req.user._id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':reservaId')
+  async deleteReserva(@Param('reservaId') reservaId: string) {
+    return this.reservasService.deleteReserva(new Types.ObjectId(reservaId));
   }
 }

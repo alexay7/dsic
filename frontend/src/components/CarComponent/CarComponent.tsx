@@ -22,7 +22,7 @@ export function CarComponent(props:CarComponentProps):React.ReactElement {
     const navigate = useNavigate();
 
     return (
-        <div className="flex w-10/12 m-auto">
+        <div className="flex w-10/12 m-auto items-center">
             {payment && (
                 <Elements stripe={stripePromise}>
                     <PaymentPopup showPopup={payment} closePopup={()=>setPayment(false)} vehicle={car}/>
@@ -38,6 +38,7 @@ export function CarComponent(props:CarComponentProps):React.ReactElement {
                         <p>Tipo de Vehículo</p>
                         <p>Punto de recogida</p>
                         <p>Disponible</p>
+                        <p>Combustible</p>
                     </div>
                 </div>
                 <div className="flex flex-col">
@@ -46,6 +47,7 @@ export function CarComponent(props:CarComponentProps):React.ReactElement {
                         <p>{car.type}</p>
                         <p>{car.location}</p>
                         <p>{car.available ? "Sí" : "No"}</p>
+                        <p>{car.energy}</p>
                     </div>
                 </div>
             </div>

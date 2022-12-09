@@ -8,4 +8,5 @@ export interface Reserva {
     days: number;
     price: number;
     vehicle?:Car;
+    startDate?:string;
 }
