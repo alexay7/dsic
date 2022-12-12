@@ -32,7 +32,7 @@ export class ReservasController {
       ...body,
     };
     const available = await this.vehiculosService.reserveVehicle(
-      body.vehicleId,
+      new Types.ObjectId(body.vehicleId),
     );
     if (available) {
       const result = await this.reservasService.createReserva(newReserva);

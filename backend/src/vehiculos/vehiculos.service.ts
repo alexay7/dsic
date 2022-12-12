@@ -12,13 +12,13 @@ export class VehiculosService {
   ) {}
 
   async reserveVehicle(vehicleId: Types.ObjectId): Promise<boolean> {
-    const result = await this.vehiculoModel.findByIdAndUpdate(
+    const result = await this.vehiculoModel.findOneAndUpdate(
       { vehicleId, available: true },
       {
         available: false,
       },
     );
-    return result.isModified();
+    return result != null;
   }
 
   async searchFilter(filter: VehiculoSearch): Promise<Vehiculo[]> {

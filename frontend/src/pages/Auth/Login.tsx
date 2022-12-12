@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 
 import {FormControl, TextField} from "@mui/material";
-import {useNavigate} from "react-router-dom";
 
 import {anonymRequest} from "../../api/api";
 import {PageContainer} from "../../components/PageContainer/PageContainer";
@@ -12,7 +11,6 @@ export function Login(): React.ReactElement {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const {setUserData} = useAuth();
-    const navigate = useNavigate();
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
         e.preventDefault();
@@ -23,8 +21,9 @@ export function Login(): React.ReactElement {
         const response = await anonymRequest("login", {method: "POST", body: JSON.stringify(body)}) as {access_token: string};
         if (response.access_token !== null) {
             setUserData({username});
+
             setCookie("token", response.access_token, 365);
-            navigate("/");
+            window.location.href = "/";
         }
     }
 

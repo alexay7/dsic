@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import {Checkbox, FormControlLabel, FormGroup, LinearProgress} from "@mui/material";
 import * as firebase from "firebase/app";
@@ -64,6 +64,12 @@ export function Ajustes():React.ReactElement {
             );
         }
     };
+
+    useEffect(()=>{
+        if (!userData) {
+            window.location.href = "/";
+        }
+    }, [userData]);
 
     return (
         <PageContainer>
