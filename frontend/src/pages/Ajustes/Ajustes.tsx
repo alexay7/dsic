@@ -108,9 +108,9 @@ export function Ajustes():React.ReactElement {
                     }}
                     >
                         <option value="">-- Tipo de permiso -- </option>
-                        <option value="car">Coche</option>
-                        <option value="bike">Moto</option>
-                        <option value="furgo">Furgoneta</option>
+                        <option value="car" hidden={userData?.licences?.includes("car")}>Coche</option>
+                        <option value="bike" hidden={userData?.licences?.includes("bike")}>Moto</option>
+                        <option value="furgo" hidden={userData?.licences?.includes("furgo")}>Furgoneta</option>
                     </select>
                     <input required className="m-auto" type="file" onChange={(e)=>{
                         if (e.target.files && e.target.files.length > 0) {
